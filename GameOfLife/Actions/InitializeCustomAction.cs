@@ -17,6 +17,12 @@ namespace GameOfLife.Actions
         {
             _userInterface.ClearInterface();
 
+            if (_boardService.BoardInitialized)
+            {
+                _userInterface.WriteMessage("Action not available!\n");
+                return;
+            }
+
             //TODO: Add validation for the input
             int width, height, cellSize;
             width = int.Parse(_userInterface.GetInput("Enter the width of the board"));

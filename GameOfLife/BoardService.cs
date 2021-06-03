@@ -24,7 +24,7 @@ namespace GameOfLife
             {
                 for (int y = 0; y < _board.Row; y++)
                 {
-                    Console.Write(_board.Grid[x, y].IsAlive == CellState.Alive ? " ¤ " : "  ");
+                    Console.Write(_board.Grid[x, y].IsAlive == CellState.Alive ? " ¤ " : "   ");
                 }
                 Console.WriteLine();
             }

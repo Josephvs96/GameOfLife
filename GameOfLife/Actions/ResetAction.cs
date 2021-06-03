@@ -12,6 +12,13 @@ namespace GameOfLife.Actions
         public override void Execute()
         {
             _userInterface.ClearInterface();
+
+            if (!_boardService.BoardInitialized)
+            {
+                _userInterface.WriteMessage("Action not available!\n");
+                return;
+            }
+
             _boardService.ResetBoard();
             _boardService.RenderBoard();
         }
@@ -21,3 +28,4 @@ namespace GameOfLife.Actions
         }
     }
 }
+
