@@ -20,7 +20,7 @@ namespace GameOfLife.Actions
             }
 
             _boardService.ResetBoard();
-            _boardService.RenderBoard();
+            _userInterface.WriteMessage(_boardService.RenderBoard());
         }
 
         public ResetAction(IUserInterface userInterface, IBoardService boardService) : base(userInterface, boardService)

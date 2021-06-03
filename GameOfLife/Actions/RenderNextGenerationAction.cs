@@ -23,7 +23,7 @@ namespace GameOfLife.Actions
                 return;
             }
 
-            _boardService.RenderBoard();
+            _userInterface.WriteMessage(_boardService.RenderBoard());
 
         }
     }

@@ -6,6 +6,7 @@ namespace GameOfLife
     {
         private static void Main()
         {
+            //Rules: written by John Conway
             //Any live cell with fewer than two live neighbours dies, as if by underpopulation.
             //Any live cell with more than three live neighbours dies, as if by overpopulation.
             //Any live cell with two or three live neighbours lives on to the next generation.

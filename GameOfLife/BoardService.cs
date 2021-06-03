@@ -18,17 +18,20 @@ namespace GameOfLife
             _board = new Board(width, height, cellSize);
         }
 
-        public void RenderBoard()
+        public string RenderBoard()
         {
+            StringBuilder stringBuilder = new StringBuilder();
             for (int x = 0; x < _board.Col; x++)
             {
                 for (int y = 0; y < _board.Row; y++)
                 {
-                    Console.Write(_board.Grid[x, y].IsAlive == CellState.Alive ? " ¤ " : "   ");
+                    stringBuilder.Append(_board.Grid[x, y].IsAlive == CellState.Alive ? " ¤ " : "   ");
                 }
-                Console.WriteLine();
+
+                stringBuilder.AppendLine();
             }
             _board.GenerateNextGeneration();
+            return stringBuilder.ToString();
         }
 
         public void ResetBoard()

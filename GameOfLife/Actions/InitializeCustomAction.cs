@@ -31,7 +31,7 @@ namespace GameOfLife.Actions
 
             _userInterface.ClearInterface();
             _boardService.CreateBoard(width, height, cellSize);
-            _boardService.RenderBoard();
+            _userInterface.WriteMessage(_boardService.RenderBoard());
         }
 
     }
