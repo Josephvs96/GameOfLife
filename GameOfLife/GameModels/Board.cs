@@ -24,7 +24,7 @@ namespace GameOfLife.GameModels
             {
                 for (int y = 0; y < Row; y++)
                 {
-                    Grid[x, y] = new Cell { X = x, Y = y, IsAlive = (CellState)_random.Next(2) };
+                    Grid[x, y] = new Cell { X = x, Y = y, IsAlive = CellState.Dead };
                 }
             }
 

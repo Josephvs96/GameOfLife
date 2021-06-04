@@ -34,6 +34,15 @@ namespace GameOfLife
             return stringBuilder.ToString();
         }
 
+        public void CreatePattern()
+        {
+            _board.Grid[0, 0].IsAlive = CellState.Alive;
+            _board.Grid[0, 2].IsAlive = CellState.Alive;
+            _board.Grid[1, 1].IsAlive = CellState.Alive;
+            _board.Grid[1, 2].IsAlive = CellState.Alive;
+            _board.Grid[2, 1].IsAlive = CellState.Alive;
+        }
+
         public void ResetBoard()
         {
             _board.RandomizeCells();

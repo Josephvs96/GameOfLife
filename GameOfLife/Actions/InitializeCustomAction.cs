@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using GameOfLife.UserInterface;
@@ -13,7 +14,7 @@ namespace GameOfLife.Actions
         {
         }
 
-        public override void Execute()
+        public override void Execute(List<string> args)
         {
             _userInterface.ClearInterface();
 
@@ -24,13 +25,20 @@ namespace GameOfLife.Actions
             }
 
             //TODO: Add validation for the input
+            if (args?.Count != 3)
+            {
+                _userInterface.WriteMessage("Invalid input arguments, please check the parameters and try again\n" +
+                                            "Format: Custom <width> <height> <cell size>");
+                return;
+            }
             int width, height, cellSize;
-            width = int.Parse(_userInterface.GetInput("Enter the width of the board"));
-            height = int.Parse(_userInterface.GetInput("Enter the height of the board"));
-            cellSize = int.Parse(_userInterface.GetInput("Enter the size of the cells on board"));
+            width = int.Parse(args[0]);
+            height = int.Parse(args[1]);
+            cellSize = int.Parse(args[2]);
 
             _userInterface.ClearInterface();
             _boardService.CreateBoard(width, height, cellSize);
+            _boardService.ResetBoard();
             _userInterface.WriteMessage(_boardService.RenderBoard());
         }
 

@@ -1,7 +1,9 @@
-﻿namespace GameOfLife.Actions
+﻿using System.Collections.Generic;
+
+namespace GameOfLife.Actions
 {
     public interface IAction
     {
-        void Execute();
+        void Execute(List<string> args);
     }
 }

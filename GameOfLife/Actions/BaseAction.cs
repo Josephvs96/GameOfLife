@@ -18,6 +18,6 @@ namespace GameOfLife.Actions
             _boardService = boardService;
         }
 
-        public abstract void Execute();
+        public abstract void Execute(List<string> args);
     }
 }

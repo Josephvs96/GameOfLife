@@ -9,7 +9,7 @@ namespace GameOfLife.Actions
 {
     public class ResetAction : BaseAction
     {
-        public override void Execute()
+        public override void Execute(List<string> args)
         {
             _userInterface.ClearInterface();
 

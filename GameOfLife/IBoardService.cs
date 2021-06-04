@@ -6,5 +6,6 @@
         void CreateBoard(int width, int height, int cellSize);
         void ResetBoard();
         string RenderBoard();
+        void CreatePattern();
     }
 }

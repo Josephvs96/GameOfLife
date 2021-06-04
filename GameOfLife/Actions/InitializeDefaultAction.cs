@@ -12,7 +12,7 @@ namespace GameOfLife.Actions
         public InitializeDefaultAction(IUserInterface userInterface, IBoardService boardService) : base(userInterface, boardService)
         {
         }
-        public override void Execute()
+        public override void Execute(List<string> args = null)
         {
             _userInterface.ClearInterface();
 
@@ -23,6 +23,7 @@ namespace GameOfLife.Actions
             }
 
             _boardService.CreateBoard(100, 100, 10);
+            _boardService.CreatePattern();
             _userInterface.WriteMessage(_boardService.RenderBoard());
         }
     }

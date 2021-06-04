@@ -23,19 +23,22 @@ namespace GameOfLife
         {
             Dictionary<string, IAction> actions = new Dictionary<string, IAction>()
             {
-                {"s", new InitializeDefaultAction(_userInterface,_boardService)},
-                {"c", new InitializeCustomAction(_userInterface,_boardService)},
-                {"n",new RenderNextGenerationAction(_userInterface,_boardService)},
-                {"r", new ResetAction(_userInterface,_boardService)},
+                {"start", new InitializeDefaultAction(_userInterface,_boardService)},
+                {"custom", new InitializeCustomAction(_userInterface,_boardService)},
+                {"next",new RenderNextGenerationAction(_userInterface,_boardService)},
+                {"reset", new ResetAction(_userInterface,_boardService)},
+                {"play",new AutoViewNextGenerationAction(_userInterface,_boardService)}
             };
 
             _userInterface.WriteMessage(WelcomeMessage());
 
             string inputAction;
-            while ((inputAction = FetchAction().ToLower()) != "e")
+            while ((inputAction = FetchAction().ToLower()) != "exit")
             {
-                IAction action = actions.GetValueOrDefault(inputAction, new UnknownAction(_userInterface, _boardService));
-                action.Execute();
+                List<string> args = inputAction.Split(" ").ToList();
+                IAction action = actions.GetValueOrDefault(args[0].ToLower(), new UnknownAction(_userInterface, _boardService));
+                args.RemoveAt(0);
+                action.Execute(args);
             }
         }
 
@@ -55,17 +58,18 @@ namespace GameOfLife
 
         private string MainMenuActions()
         {
-            const string availableActions = "¤ S : Start a game with the default board settings (100X100 and a cell size of 10)\n" +
-                                            "¤ C : Start a game with custom board settings\n" +
-                                            "¤ E : Exit the game";
+            const string availableActions = "¤ Start : Start a game with the default board settings\n" +
+                                            "¤ Custom : Start a game with custom board settings | Format: Custom <width> <height> <cell size>\n" +
+                                            "¤ Exit : Exit the game";
             return availableActions;
         }
 
         private string GameActions()
         {
-            const string availableActions = "\n¤ N : Render next generation\n" +
-                                            "¤ R : Randomize the cells and render the board\n" +
-                                            "¤ E : Exit the game";
+            const string availableActions = "\n¤ Play : auto plays a number of generations | Format Play <number>\n" +
+                                            "¤ Next : Render next generation\n" +
+                                            "¤ Reset : Randomize the cells and render the board\n" +
+                                            "¤ Exit : Exit the game";
             return availableActions;
         }
     }

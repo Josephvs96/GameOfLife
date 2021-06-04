@@ -9,7 +9,7 @@ namespace GameOfLife.Actions
 {
     public class UnknownAction : BaseAction
     {
-        public override void Execute()
+        public override void Execute(List<string> args)
         {
             _userInterface.ClearInterface();
             _userInterface.WriteMessage("Cannot find the requested action! please enter a valid action and try again.\n");

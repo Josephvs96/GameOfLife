@@ -13,7 +13,7 @@ namespace GameOfLife.Actions
         {
         }
 
-        public override void Execute()
+        public override void Execute(List<string> args)
         {
             _userInterface.ClearInterface();
 
